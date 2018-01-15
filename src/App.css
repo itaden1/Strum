@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.guitar{width:403px;height:192px;background-color:#825d00;margin:50px Auto;text-align:center;}
+.boxes{position:relative;top:-193px;}
+.fret{border:solid transparent 1px;height:30px;width:65px;float:left;line-height:1.7;font-size:1.4em;}
+.fret:hover{background-color:rgba(255,255,255,0.5);cursor:pointer;}
+
+.str-graphic{border-top:solid 2px gold;width:100%;height:30px;position:relative;top:16px;}
+.fret-graphic{position:relative;top:-0px;border-left:#555 solid 3px;width:64px;height:192px;float:left;}
+.graphics::after{clear:both;display:block;content:'';}
+
