@@ -4,12 +4,20 @@ import './App.css';
 
 
 const strings = {
-	1:Array(8).fill(''),
-	2:Array(8).fill(''),
-	3:Array(8).fill(''),
-	4:Array(8).fill(''),
-	5:Array(8).fill(''),
-	6:Array(8).fill(''),
+	1:Array(8).fill(null),
+	2:Array(8).fill(null),
+	3:Array(8).fill(null),
+	4:Array(8).fill(null),
+	5:Array(8).fill(null),
+	6:Array(8).fill(null),
+}
+const notes = {
+	1:['E','F','F#','G','G#','A','A#','B'],
+	2:['B','C','C#','D','D#','E','F','F#'],
+	3:['G','G#','A','A#','B','C','C#','D'],
+	4:['D','D#','E','F','F#','G','G#','A'],
+	5:['A','A#','B','C','C#','D','D#','E'],
+	6:['E','F','F#','G','G#','A','A#','B'],
 }
 
 class Fret extends Component{
@@ -17,7 +25,9 @@ class Fret extends Component{
 	render(){
 		return(
 			<div className = "fret" onClick={() => this.props.onClick()}>
-					{ this.props.value }
+			<div className = "circle">
+				{ this.props.value }
+			</div>
 			</div>
 		)
 	}
@@ -29,15 +39,20 @@ class App extends Component {
 		this.state = strings;
 	}
 	addNote(v, k, s){
-		const notes = this.state;
-		var note = notes[s][k];
-		for(var n=0;n<notes[s].length;n++){
-			notes[s][n] = ''
+		var strings = this.state;
+		const copystate = strings;
+		for(var n=0;n< strings[s].length;n++){
+			if(strings[s][k] !== strings[s][n]){
+				strings[s][n] = null;
+			}
 		}
-		if(note === ''){
-			notes[s][k] = 'X';
+		if(copystate[s][k] === notes[s][k]){
+			strings[s][k] = null;
+		}else{
+			strings[s][k] = notes[s][k];
 		}
-		this.setState({notes: notes})
+		
+		this.setState({strings: strings})
 	}
 	renderString(i){
 		const string = this.state[i]
