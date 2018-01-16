@@ -28,8 +28,8 @@
 }
 
 
-.guitar{width:403px;height:192px;background-color:#825d00;margin:50px Auto;text-align:center;}
-.boxes{position:relative;top:-193px;}
+.guitar{width:470px;height:192px;background-color:#825d00;margin:50px Auto;text-align:center;}
+.boxes{position:relative;top:-193px;left:-68px;width:575px;}
 .fret{border:solid transparent 1px;height:30px;width:65px;float:left;line-height:1.7;font-size:1.4em;}
 .fret:hover{background-color:rgba(255,255,255,0.5);cursor:pointer;}
 
