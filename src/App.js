@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 
+// Data
+//Representation of guitar strings and fret
 const strings = {
 	1:Array(8).fill(null),
 	2:Array(8).fill(null),
@@ -11,6 +13,8 @@ const strings = {
 	5:Array(8).fill(null),
 	6:Array(8).fill(null),
 }
+
+//For mapping strings / frets to notes
 const notes = {
 	1:['E','F','F#','G','G#','A','A#','B'],
 	2:['B','C','C#','D','D#','E','F','F#'],
@@ -18,6 +22,52 @@ const notes = {
 	4:['D','D#','E','F','F#','G','G#','A'],
 	5:['A','A#','B','C','C#','D','D#','E'],
 	6:['E','F','F#','G','G#','A','A#','B'],
+}
+
+//for mapping sum of intervals to chord extension
+const interval = {
+	 7: '5',
+	 9: 'sus2',
+	10: 'minor',
+	11: 'major',
+	12: 'sus4',
+	19: 'm6',
+	20: 'm7',
+	21: '6',
+	22: '7',
+	23: 'maj7',
+	25: 'add9',
+
+}
+
+//Controllers
+function findChord(chord){
+	var base_note = chord[0]
+
+	//Remove duplicates
+	let cleaned_chord = chord.filter(function(elem, index, self){
+		return index === self.indexOf(elem);	
+	});
+
+	//shift notes so that base note is on position 0
+	var note_ref = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#']
+	var len = note_ref.indexOf(base_note);
+	for(var i = 0; i < len; i++){
+		note_ref.push(note_ref.shift());
+
+	}
+	console.log(cleaned_chord);
+	console.log(note_ref);
+	//get values of chord notes
+	var val = 0;
+	for(var n=0; n<cleaned_chord.length;n++){
+		val += note_ref.indexOf(cleaned_chord[n])
+	}
+	console.log(base_note + ' ' + interval[val]);
+	return {
+		'key': base_note,
+		'chord':interval[val]
+	};
 }
 
 class Fret extends Component{
@@ -36,26 +86,55 @@ class Fret extends Component{
 class App extends Component {
 	constructor(props){
 		super(props)
-		this.state = strings;
+		this.state = {
+			strings: strings,
+			chord: {
+				'key': 'E',
+				'chord':''
+			}
+		};
 	}
 	addNote(v, k, s){
-		var strings = this.state;
+		var strings = this.state.strings;
+		
+
+		//Copy the selected notes then
+		//remove all notes from selected string
 		const copystate = strings;
 		for(var n=0;n< strings[s].length;n++){
 			if(strings[s][k] !== strings[s][n]){
 				strings[s][n] = null;
 			}
 		}
+		//Check if note was already selected remove it if so, otherwise add it
 		if(copystate[s][k] === notes[s][k]){
 			strings[s][k] = null;
 		}else{
 			strings[s][k] = notes[s][k];
+			
 		}
-		
-		this.setState({strings: strings})
+
+		//Make an array of all selected notes
+		var chord = []
+		var len = Object.keys(strings).length
+		for(var i=1; i <= len; i++){
+			for(var x=0;x < strings[i].length; x++){
+				if(strings[i][x] != null){
+					chord.push(strings[i][x]);
+					chord.reverse();
+				}
+			}
+		}
+		//Find current chord
+		var new_chord = findChord(chord)
+
+		this.setState({
+			strings: strings,
+			chord: new_chord
+		})
 	}
 	renderString(i){
-		const string = this.state[i]
+		const string = this.state.strings[i]
 		const notes = string.map( (value, key) => 
 				<Fret 
 					key = {key}
@@ -123,6 +202,9 @@ class App extends Component {
 					{this.renderString(6)}
 				</div>
 			</div>
+		</div>
+		<div className = "chord_name">
+			<h3>{this.state.chord.key} {this.state.chord.chord}</h3>
 		</div>
 	</div>
 );
