@@ -30,15 +30,15 @@ const interval = {
 	'Major 6':            '0,4,7,9',
 	'Major 6 add 9':      '0,4,7,14',
 	'Major 7':            '0,4,7,11',
-	'Major 9':            '0,4,7,11,14',
+	'Major 9':            '0,2,4,7,11',
 	'Dom 7':              '0,4,7,10',
-	'Dom 7 Flat 10':      '0,4,7,10,15',
+	'Dom 7 Flat 10':      '0,3,4,7,10',
 	'Dom 7 aug 5':        '0,4,6,10',
 	'Dom 7 sus 4':        '0,5,7,10',
-	'Dom 9':              '0,4,7,10,14',
-	'Dom 9 sus 4':        '0,5,7,14',
-	'Dom 11':             '0,4,7,10,14,17',
-	'Dom 13':             '0,4,7,10,14,17,21',
+	'Dom 9':              '0,2,4,7,10',
+	'Dom 9 sus 4':        '0,2,5,7',
+	'Dom 11':             '0,2,4,5,7,10',
+	//'Dom 13':             '0,3,5,7,9,10',
 	'Aug':                '0,4,6',
 	'Minor':              '0,3,7',      
 	'Minor 6':            '0,3,7,9',
@@ -78,7 +78,7 @@ function findChord(chord){
 	for(var n=0; n<cleaned_chord.length;n++){
 		val.push(note_ref.indexOf(cleaned_chord[n]))
 	}
-	var sorted_val = val.sort();
+	var sorted_val = val.sort(function(a,b){return a - b;});
 	var str_val = sorted_val.toString();
 
 	console.log(getKeyByValue(interval,str_val));
