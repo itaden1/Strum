@@ -26,21 +26,38 @@ const notes = {
 
 //for mapping sum of intervals to chord extension
 const interval = {
-	 7: '5',
-	 9: 'sus2',
-	10: 'minor',
-	11: 'major',
-	12: 'sus4',
-	19: 'm6',
-	20: 'm7',
-	21: '6',
-	22: '7',
-	23: 'maj7',
-	25: 'add9',
-
+	'Major':              '0,4,7',
+	'Major 6':            '0,4,7,9',
+	'Major 6 add 9':      '0,4,7,14',
+	'Major 7':            '0,4,7,11',
+	'Major 9':            '0,4,7,11,14',
+	'Dom 7':              '0,4,7,10',
+	'Dom 7 Flat 10':      '0,4,7,10,15',
+	'Dom 7 aug 5':        '0,4,6,10',
+	'Dom 7 sus 4':        '0,5,7,10',
+	'Dom 9':              '0,4,7,10,14',
+	'Dom 9 sus 4':        '0,5,7,14',
+	'Dom 11':             '0,4,7,10,14,17',
+	'Dom 13':             '0,4,7,10,14,17,21',
+	'Aug':                '0,4,6',
+	'Minor':              '0,3,7',      
+	'Minor 6':            '0,3,7,9',
+	'Minor 7':            '0,3,7,10',
+	'Minor 7 Flat 5':     '0,3,6,10',
+	'Dim':                '0,3,6',
+	'Dim 7':              '0,3,6,9',
+	'Sus 4':              '0,5,7',
+	'Sus 2':              '0,2,7',
+	'Add 9':              '0,4,7,14',
 }
 
-//Controllers
+//Helper functions
+
+function getKeyByValue(object, value){
+	console.log(value);
+	return Object.keys(object).find(key => object[key] === value);
+}
+
 function findChord(chord){
 	var base_note = chord[0]
 
@@ -56,17 +73,24 @@ function findChord(chord){
 		note_ref.push(note_ref.shift());
 
 	}
-	console.log(cleaned_chord);
-	console.log(note_ref);
 	//get values of chord notes
-	var val = 0;
+	var val = [];
 	for(var n=0; n<cleaned_chord.length;n++){
-		val += note_ref.indexOf(cleaned_chord[n])
+		val.push(note_ref.indexOf(cleaned_chord[n]))
 	}
-	console.log(base_note + ' ' + interval[val]);
+	var sorted_val = val.sort();
+	var str_val = sorted_val.toString();
+
+	console.log(getKeyByValue(interval,str_val));
+
+	var my_val = getKeyByValue(interval,str_val);
+	if(my_val === undefined){
+		my_val = '?';
+	}
+
 	return {
 		'key': base_note,
-		'chord':interval[val]
+		'chord':my_val,
 	};
 }
 
