@@ -6,26 +6,27 @@ import './App.css';
 // Data
 //Representation of guitar strings and fret
 const strings = {
-	1:Array(8).fill(null),
-	2:Array(8).fill(null),
-	3:Array(8).fill(null),
-	4:Array(8).fill(null),
-	5:Array(8).fill(null),
-	6:Array(8).fill(null),
+	1:Array(14).fill(null),
+	2:Array(14).fill(null),
+	3:Array(14).fill(null),
+	4:Array(14).fill(null),
+	5:Array(14).fill(null),
+	6:Array(14).fill(null),
 }
 
 //For mapping strings / frets to notes
 const notes = {
-	1:['E','F','F#','G','G#','A','A#','B'],
-	2:['B','C','C#','D','D#','E','F','F#'],
-	3:['G','G#','A','A#','B','C','C#','D'],
-	4:['D','D#','E','F','F#','G','G#','A'],
-	5:['A','A#','B','C','C#','D','D#','E'],
-	6:['E','F','F#','G','G#','A','A#','B'],
+	1:['E','F','F#','G','G#','A','A#','B','C','C#','D','D#','E','F'],
+	2:['B','C','C#','D','D#','E','F','F#','G','G#','A','A#','B','C'],
+	3:['G','G#','A','A#','B','C','C#','D','D#','E','F','F#','G','G#'],
+	4:['D','D#','E','F','F#','G','G#','A','A#','B','C','C#','D','D#'],
+	5:['A','A#','B','C','C#','D','D#','E','F','F#','G','G#','A','A#'],
+	6:['E','F','F#','G','G#','A','A#','B','C','C#','D','D#','E','F'],
 }
 
 //for mapping sum of intervals to chord extension
 const interval = {
+	'5':                  '0,7',
 	'Major':              '0,4,7',
 	'Major 6':            '0,4,7,9',
 	'Major 6 add 9':      '0,4,7,14',
@@ -179,6 +180,18 @@ class App extends Component {
 		</header>
 		<div className = "guitar">
 			<div className = "graphics">
+				<div className = "fret-graphic">
+				</div>
+				<div className = "fret-graphic">
+				</div>
+				<div className = "fret-graphic">
+				</div>
+				<div className = "fret-graphic">
+				</div>
+				<div className = "fret-graphic">
+				</div>
+				<div className = "fret-graphic">
+				</div>
 				<div className = "fret-graphic">
 				</div>
 				<div className = "fret-graphic">
