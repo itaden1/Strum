@@ -1,3 +1,5 @@
+ @import url('https://fonts.googleapis.com/css?family=Oranienbaum|Scheherazade');
+
 .App {
   text-align: center;
 }
@@ -39,4 +41,21 @@
 .fret-graphic{position:relative;top:-0px;border-left:#555 solid 3px;border-right:#333 2px solid;margin-left:52px;height:192px;float:left;border-radius:5px;}
 .graphics::after{clear:both;display:block;content:'';}
 
-.chord_name h3{font-size:2em;padding-top:0;width:470px;margin:0 auto;position:relative;top:-150px;z-index:-1;}
+.chord_name{text-align:left;}
+
+.chord_name h3{
+	font-family: 'Scheherazade', serif;
+	font-weight:300;
+	font-size:2em;
+	padding-top:0;
+	width:470px;
+	margin:0 auto;
+	position:relative;
+	top:-150px;
+	z-index:-1;
+}
+.chord_name h3 span{
+	font-family: 'Scheherazade', serif;
+	font-weight:300;
+	font-size:2em;
+}

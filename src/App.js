@@ -24,8 +24,10 @@ const notes = {
 	6:['E','F','F#','G','G#','A','A#','B','C','C#','D','D#','E','F'],
 }
 
-//for mapping sum of intervals to chord extension
-const interval = {
+const intervals = ['I','bII','II','bIII','III','IV','bV','V','bVI','VI','bVII','VII','VIII']
+
+//for mapping interval combinations to chord extension
+const chords = {
 	'5':                  '0,7',
 	'Major':              '0,4,7',
 	'Major 6':            '0,4,7,9',
@@ -39,7 +41,7 @@ const interval = {
 	'Dom 9':              '0,2,4,7,10',
 	'Dom 9 sus 4':        '0,2,5,7',
 	'Dom 11':             '0,2,4,5,7,10',
-	//'Dom 13':             '0,3,5,7,9,10',
+	//'Dom 13':             '0,3,5,7,9,10', not technically possible on guitar
 	'Aug':                '0,4,6',
 	'Minor':              '0,3,7',      
 	'Minor 6':            '0,3,7,9',
@@ -82,9 +84,9 @@ function findChord(chord){
 	var sorted_val = val.sort(function(a,b){return a - b;});
 	var str_val = sorted_val.toString();
 
-	console.log(getKeyByValue(interval,str_val));
+	console.log(getKeyByValue(chords,str_val));
 
-	var my_val = getKeyByValue(interval,str_val);
+	var my_val = getKeyByValue(chords,str_val);
 	if(my_val === undefined){
 		my_val = '?';
 	}
@@ -114,7 +116,7 @@ class App extends Component {
 		this.state = {
 			strings: strings,
 			chord: {
-				'key': 'E',
+				'key': '',
 				'chord':''
 			}
 		};
@@ -241,7 +243,7 @@ class App extends Component {
 			</div>
 		</div>
 		<div className = "chord_name">
-			<h3>{this.state.chord.key} {this.state.chord.chord}</h3>
+			<h3><span>{this.state.chord.key}</span> {this.state.chord.chord}</h3>
 		</div>
 	</div>
 );
