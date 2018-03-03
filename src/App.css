@@ -2,64 +2,145 @@
 
 
 html, body{height:100%;position:relative;}
-#root{
-}
 
 .App {
-	background-color:#000;
-	background-image:url('background.jpg');
-	background-repeat:no-repeat;
-	background-position:top;
+	background-color:#f5f5f5;
 	height:100%;
-	height:100%;
-  	text-align: center;
 	overflow:hidden;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  height: 150px;
-  text-align:left;
-  padding: 20px;
-  color: white;
+    text-align:left;
+    color: white;
+    margin:0 auto;
+    background-color:#222;
+}
+
+.App-header img{
+    float:left;
+    height:120px;
+    padding:10px 0px;
 }
 
 .App-title {
-  font-size: 1.5em;
+    margin:0;
+    padding:55px 0 0;
+    font-size: 5.5em;
+    line-height:1;
+    font-family: 'Scheherazade', serif;
 }
-
 .App-intro {
   font-size: large;
 }
-
-.App-body{background-color:#fff;width:970px;margin:0 auto;padding:40px;}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.container-lrg{
+    width:1030px;
+    margin:0 auto;
+}
+.App-body{
+    background-color:#fff;
+    width:970px;margin:0 auto;
+    padding:40px;
+    margin-top:20px;
 }
 
-.container{max-width:780px;margin:0 auto;position:relative;}
+.container{
+    max-width:780px;
+    margin:0 auto;
+    position:relative;
+}
+
 .row{display:block;}
-.column-4{width:40%;float:left;display:block;position:relative;}
-.column-6{width:60%;float:left;display:block;position:relative;}
 .row:after{clear:both;content:'';display:block;}
-.chord-info{position:relative;top:-150px;z-index:1;margin-bottom:-100px;height:230px;}
+
+.column-4{
+    width:40%;
+    float:left;
+    display:block;
+    position:relative;
+}
+.column-6{
+    width:60%;
+    float:left;
+    display:block;
+    position:relative;
+}
+
+.chord-info{
+    position:relative;
+    top:-150px;
+    z-index:1;
+    margin-bottom:-100px;
+    height:230px;
+}
 
 
-.guitar{width:775px;height:192px;background-color:#825d00;margin:50px Auto;text-align:center;border-left:solid 5px black;}
-.boxes{position:relative;top:-193px;left:-58px;width:798px;margin-bottom:-0;z-index:2;}
-.fret{border:solid transparent 1px;height:30px;width:55px;float:left;}
-.fret:hover{background-color:rgba(255,255,255,0.5);cursor:pointer;}
-.circle{color:white;background-color:green;border-radius:50%;margin:0 auto;line-height:1.6;font-size:1.1em;width:30px;top:3px;position:relative;box-shadow:2px 2px 2px #333;text-shadow:1px 1px 1px #333;}
+.guitar{
+    width:775px;
+    height:192px;
+    background-color:#825d00;
+    margin:50px Auto;
+    text-align:center;
+    border-left:solid 5px black;
+}
+.boxes{
+    position:relative;
+    top:-193px;
+    left:-58px;
+    width:798px;
+    margin-bottom:-0;
+    z-index:2;
+}
+
+.fret{
+    border:solid transparent 1px;
+    height:30px;
+    width:55px;
+    float:left;
+}
+.fret:hover{
+    background-color:rgba(255,255,255,0.5);
+    cursor:pointer;
+}
+.circle{
+    color:white;
+    background-color:green;
+    border-radius:50%;
+    margin:0 auto;
+    line-height:1.6;
+    font-size:1.1em;
+    width:30px;
+    top:3px;
+    position:relative;
+    box-shadow:2px 2px 2px #333;
+    text-shadow:1px 1px 1px #333;
+}
 
 
-.str-graphic{border-top:solid 1px #f2ca4d;border-bottom:solid 1px #d1ab32;width:100%;margin-top:30px;position:relative;top:16px;box-shadow:2px 2px 2px #333;}
-.fret-graphic{position:relative;top:-0px;border-left:#555 solid 3px;border-right:#333 2px solid;margin-left:52px;height:192px;float:left;border-radius:5px;}
+.str-graphic{
+    border-top:solid 1px #f2ca4d;
+    border-bottom:solid 1px #d1ab32;
+    width:100%;
+    margin-top:30px;
+    position:relative;
+    top:16px;
+    box-shadow:2px 2px 2px #333;
+}
+
+.fret-graphic{
+    position:relative;
+    top:-0px;
+    border-left:#555 solid 3px;
+    border-right:#333 2px solid;
+    margin-left:52px;
+    height:192px;
+    float:left;
+    border-radius:5px;
+}
 .graphics::after{clear:both;display:block;content:'';}
 
 .chord_name{
@@ -69,7 +150,7 @@ html, body{height:100%;position:relative;}
 .chord_name h3{
 	font-family: 'Scheherazade', serif;
 	font-weight:300;
-	font-size:2.9em;
+	font-size:3.4em;
 	padding-top:0;
 	margin:0 auto;
 	z-index:-1;
@@ -77,13 +158,23 @@ html, body{height:100%;position:relative;}
 .chord_name h3 span{
 	font-family: 'Scheherazade', serif;
 	font-weight:300;
-	font-size:1.5em;
+	font-size:2em;
 }
 
 .intervals{
 	font-family: 'Scheherazade', serif;
 	font-size:1.4em;
 }
-.intervals h4{margin-top:10px;margin-bottom:3px;}
-.intervals table{width:100%;border-collapse:collapse;}
-.intervals table td{border:solid 1px;width:7.6%;padding:1px 5px;}
+.intervals h4{
+    margin-top:10px;
+    margin-bottom:3px;
+}
+.intervals table{
+    width:100%;
+    border-collapse:collapse;
+}
+.intervals table td{
+    border:solid 1px;
+    width:7.6%;
+    padding:1px 5px;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import guitar from './guitar.png';
 import './App.css';
 
 
@@ -28,8 +28,9 @@ const intervals = ['I','bII','II','bIII','III','IV','bV','V','bVI','VI','bVII','
 
 //for mapping interval combinations to chord extension
 const chords = {
-	'5':                  '0,7',
-	'Maj':                '0,4,7',
+	'5':                  'I,V',
+	'Maj':                'I,III,V',
+    'Maj7'                'I,III,V,VII',
 	'Maj 6':              '0,4,7,9',
 	'6 add 9':      	  '0,2,4,7,9',
 	'Maj 7':              '0,4,7,11',
@@ -79,12 +80,20 @@ function findChord(chord){
 	
 	//get values of chord notes
 	var val = [];
-	for(var n=0; n<cleaned_chord.length;n++){
-		val.push(note_ref.indexOf(cleaned_chord[n]))
-		
+    var interval_val = [];
+	for(var n = 0; n < cleaned_chord.length; n++){
+        var index = note_ref.indexOf(cleaned_chord[n]);
+	//	val.push(intervals[index]);
+        interval_val.push(index);
 	}
-	var sorted_val = val.sort(function(a,b){return a - b;});
-	var str_val = sorted_val.toString();
+	var sorted_val = interval_val.sort(function(a,b){return a - b;});
+    for(var s = 0; s < sorted_val.length; s++){
+        console.log(sorted_val[s]);
+		val.push(intervals[sorted_val[s]]);
+    }
+	var str_val = val.toString();
+    console.log(str_val);
+    console.log(interval_val);
 
 
 	var my_val = getKeyByValue(chords,str_val);
@@ -101,13 +110,12 @@ function findChord(chord){
 function findNotes(chord){
 	const base_note = chord[0];
 	var note_ref = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#'];
-	console.log(intervals);
 	var len = note_ref.indexOf(base_note);
 	for(var i = 0; i < len; i++){
 		note_ref.push(note_ref.shift());
 	}
 	
-	var played_notes = Array(note_ref.length).fill(' ');
+	var played_notes = Array(note_ref.length).fill('\u00A0');
 	for (var x = 0; x < note_ref.length; x++){
 		for(var y = 0; y < chord.length; y++){
 			if(chord[y] === note_ref[x]){
@@ -115,7 +123,6 @@ function findNotes(chord){
 			}
 		}
 	}
-	console.log(played_notes)
 	return played_notes
 }
 
@@ -146,7 +153,7 @@ class App extends Component {
 		super(props)
 		this.state = {
 			strings: strings,
-			notes: [],
+			notes: Array(12).fill('\u00A0'),
 			chord: {
 				'key': '',
 				'chord':'--'
@@ -235,10 +242,10 @@ class App extends Component {
 	return (
 	<div className="App">
 		<header className="App-header">
-		<div className="container">
-			<img src={logo} className="App-logo" alt="logo" />
-			<h1 className="App-title">Strum</h1>
-		</div>
+            <div className="container-lrg">
+                <img src={guitar} alt="guitar"/>
+			    <h1 className="App-title">Strum</h1>
+            </div>
 		</header>
 		<div className="App-body">
 		<div className = "container">
@@ -309,8 +316,7 @@ class App extends Component {
 		<div className = "container">
 			<div className="row chord-info">
 				<div className = "chord_name column-4">
-					<h4>Chord Name</h4>
-					<h3><span>{this.state.chord.key}</span> {this.state.chord.chord}</h3>
+					<h3><span>{this.state.chord.key}</span>{this.state.chord.chord}</h3>
 				</div>
 				<div className = "intervals column-6">
 					<h4>Chord Make Up</h4>
