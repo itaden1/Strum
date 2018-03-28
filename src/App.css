@@ -63,10 +63,6 @@ html, body{height:100%;position:relative;}
 	
 }
 
-.negative-margin{
-	margin-top:-100px;
-}
-
 .row{display:block;}
 
 .column-4{
@@ -84,7 +80,6 @@ html, body{height:100%;position:relative;}
 
 .chord-info{
     position:relative;
-    top:-150px;
     z-index:1;
     margin-bottom:-100px;
     height:230px;
@@ -97,11 +92,13 @@ html, body{height:100%;position:relative;}
     margin:50px Auto;
     text-align:center;
     border-left:solid 5px black;
+	position:relative;
 }
 .boxes{
-    position:relative;
-    top:-193px;
-    left:-58px;
+	border:red 1px solid;
+    position:absolute;
+    top:0;
+    left:-60px;
     width:798px;
     margin-bottom:-0;
     z-index:2;
@@ -224,7 +221,7 @@ html, body{height:100%;position:relative;}
 }
 .intervals table td{
     border:solid 1px #444;
-    width:7.6%;
+    width:7.7%;
     padding:1px 5px;
 }
 .intervals table tr:first-child td{

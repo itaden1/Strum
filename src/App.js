@@ -266,7 +266,7 @@ class App extends Component {
 		<div className="App-body">
 		<div className = "container">
 			<h2>Learn Guitar Chords with Strum</h2>
-			<p>Select notes on the virtual fretboard and discover a chords name and interval structure.</p>
+			<p>Select notes on the virtual fretboard and discover a chords name and interval structure.<br/> The chords are named based on the lower most note being the root.</p>
 			<div className = "guitar">
 				<div className = "graphics">
 					<div className = "fret-graphic">
@@ -342,7 +342,7 @@ class App extends Component {
 				</div>
 			</div>
 		</div>
-		<div className = "container negative-margin">
+		<div className = "container">
 			<div className="row chord-info">
 				<div className = "chord_name column-4">
 					<h3><span>{this.state.chord.key}</span>{this.state.chord.chord}</h3>
