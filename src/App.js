@@ -16,62 +16,67 @@ const strings = {
 
 //For mapping strings / frets to notes
 const notes = {
-	1:['E','F','F#','G','G#','A','A#','B','C','C#','D','D#','E','F'],
-	2:['B','C','C#','D','D#','E','F','F#','G','G#','A','A#','B','C'],
-	3:['G','G#','A','A#','B','C','C#','D','D#','E','F','F#','G','G#'],
-	4:['D','D#','E','F','F#','G','G#','A','A#','B','C','C#','D','D#'],
-	5:['A','A#','B','C','C#','D','D#','E','F','F#','G','G#','A','A#'],
-	6:['E','F','F#','G','G#','A','A#','B','C','C#','D','D#','E','F'],
+	1:['E','F','F\u266F','G','G\u266F','A','A\u266F','B','C','C\u266F','D','D\u266F','E','F'],
+	2:['B','C','C\u266F','D','D\u266F','E','F','F\u266F','G','G\u266F','A','A\u266F','B','C'],
+	3:['G','G\u266F','A','A\u266F','B','C','C\u266F','D','D\u266F','E','F','F\u266F','G','G\u266F'],
+	4:['D','D\u266F','E','F','F\u266F','G','G\u266F','A','A\u266F','B','C','C\u266F','D','D\u266F'],
+	5:['A','A\u266F','B','C','C\u266F','D','D\u266F','E','F','F\u266F','G','G\u266F','A','A\u266F'],
+	6:['E','F','F\u266F','G','G\u266F','A','A\u266F','B','C','C\u266F','D','D\u266F','E','F'],
 }
 
-const intervals = ['I','bII','II','bIII','III','IV','bV','V','bVI','VI','bVII','VII']
+const intervals = ['I','\u266DII','II','\u266DIII','III','IV','\u266DV','V','\u266DVI','VI','\u266DVII','VII']
 
 //for mapping interval combinations to chord extension
 const chords = {
-	'5':                  'I,V',
-	'Maj':                'I,III,V',
-    'add4':               'I,III,IV,V',
-    '6':                  'I,III,V,VI',
-    '6/9':                'I,II,III,V,VI',
-    'Maj7':               'I,III,V,VII',
-    'Maj9':               'I,II,III,V,VII',
-    'Maj11':              'I,II,III,IV,V,VII',
-    'Maj11(-9)':          'I,III,IV,V,VII',
-    'Maj13':              'I,II,III,IV,V,VI,VII',
-    'Maj13(-9)':          'I,III,IV,V,VI,VII',
-    'Maj13(-11)':         'I,II,IV,V,VI,VII',
-    'Maj13(-9-11)':       'I,III,V,VI,VII',
-    'Maj7#11':            'I,III,bV,V,VII',
-    'Majb5':              'I,III,bV',
-    'm':                  'I,bIII,V',
-    'madd4':              'I,bIII,IV,V',
-    'm6':                 'I,bIII,V,VI',
-    'm7':                 'I,bIII,V,bVII',
-    'madd9':              'I,II,bIII,V',
-    'm6/9':               'I,II,bIII,V,VI',
-    'm9':                 'I,II,bIII,V,bVII',
-    'm11':                'I,II,IV,bIII,V,bVII',
-    'm11(-9)':            'I,IV,bIII,V,bVII',
-    'm13':                'I,II,bIII,IV,V,VI,bVII',
-    'm13(-9)':            'I,bIII,IV,V,VI,bVII',
-    'm13(-11)':           'I,II,bIII,V,VI,bVII',
-    'm13(-9-11)':         'I,bIII,V,VI,bVII',
-    'm/Maj7':             'I,bIII,V,VII',
-    'm/Maj9':             'I,II,bIII,V,VII',
-    'm/Maj11':            'I,II,bIII,IV,V,VII',
-    'm/Maj11(-9)':        'I,bIII,IV,V,VII',
-    'm/Maj13':            'I,II,bIII,IV,V,VI,VII',
-    'm/Maj13(-9)':        'I,bIII,IV,V,VI,VII',
-    'm/Maj13(-11)':       'I,II,bIII,V,VI,VII',
-    'm/Maj13(-9-11)':     'I,bIII,V,VI,VII',
-    '\u00F8':             'I,bIII,bV,bVII',
+	'I,V': 					'5',
+	'I,III,V': 				'Maj',
+	'I,III,IV,V': 			'add4',
+	'I,III,V,VI': 			'6',
+	'I,II,III,V,VI': 		'6/9',
+	'I,III,V,VII': 			'Maj7',
+	'I,II,III,V,VII': 		'Maj9',
+	'I,II,III,IV,V,VII': 	'Maj11',
+	'I,III,IV,V,VII': 		'Maj11',
+	'I,II,III,IV,V,VI,VII': 'Maj13',
+	'I,III,IV,V,VI,VII': 	'Maj13',
+	'I,II,IV,V,VI,VII': 	'Maj13',
+	'I,III,V,VI,VII': 		'Maj13',
+	'I,III,\u266DV,V,VII': 		'Maj7\u266F11',
+	'I,III,\u266DV': 			'Maj\u266D5',
+	'I,\u266DIII,V': 			'm',
+	'I,\u266DIII,IV,V': 			'madd4',
+	'I,\u266DIII,V,VI':  		'm6',
+	'I,\u266DIII,V,\u266DVII': 		'm7',
+	'I,II,\u266DIII,V': 			'madd9',
+	'I,II,\u266DIII,V,VI': 		'm6/9',
+	'I,II,\u266DIII,V,\u266DVII': 	'm9',
+	'I,II,IV,\u266DIII,V,\u266DVII': 	'm11',
+	'I,IV,\u266DIII,V,\u266DVII': 	'm11',
+	'I,II,\u266DIII,IV,V,VI,\u266DVII':'m13',
+	'I,\u266DIII,IV,V,VI,\u266DVII': 	'm13',
+	'I,II,\u266DIII,V,VI,\u266DVII': 	'm13',
+	'I,\u266DIII,V,VI,\u266DVII': 	'm13',
+	'I,\u266DIII,V,VII': 		'm/Maj7',
+	'I,II,\u266DIII,V,VII': 		'm/Maj9',
+	'I,II,\u266DIII,IV,V,VII': 	'm/Maj11',
+	'I,\u266DIII,IV,V,VII': 		'm/Maj11',
+	'I,II,\u266DIII,IV,V,VI,VII':'m/Maj13',
+	'I,\u266DIII,IV,V,VI,VII': 	'm/Maj13',
+	'I,II,\u266DIII,V,VI,VII': 	'm/Maj13',
+	'I,\u266DIII,V,VI,VII': 		'm/Maj13',
+	'I,III,V,\u266DVII': 		'7',
+	'I,\u266DIII,\u266DV': 			'Dim',
+	'I,\u266DIII,\u266DV,VI': 		'Dim7',
+	'I,\u266DIII,\u266DV,\u266DVII': 		'\u00F8', //half diminished 7 or m7b5
+	'I,III,\u266DVI,\u266DVII': 		'7\u266F5',
+	'I,III,V,\u266DVII,II': 		'9',
+	'I,III,V,\u266DVII,\u266DIII': 	'7\u266F9',
+	'I,III,V,II': 			'add9',
+	'I,III,V,\u266DVII,\u266DV': 		'7\u266F11',
+	'I,VI,V': 				'sus4',
+	'I,II,V': 				'sus2',
 }
 
-//Helper functions
-
-function getKeyByValue(object, value){
-	return Object.keys(object).find(key => object[key] === value);
-}
 
 function findChord(chord){
 	var base_note = chord[0]
@@ -82,7 +87,7 @@ function findChord(chord){
 	});
 
 	//shift notes so that base note is on position 0
-	var note_ref = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#']
+	var note_ref = ['A','A\u266F','B','C','C\u266F','D','D\u266F','E','F','F\u266F','G','G\u266F']
 	var len = note_ref.indexOf(base_note);
 	for(var i = 0; i < len; i++){
 		note_ref.push(note_ref.shift());
@@ -103,11 +108,11 @@ function findChord(chord){
 		val.push(intervals[sorted_val[s]]);
     }
 	var str_val = val.toString();
-    console.log(str_val);
+    console.log('str val'+str_val);
     console.log(interval_val);
 
 
-	var my_val = getKeyByValue(chords,str_val);
+	var my_val = chords[str_val];  //getKeyByValue(chords,str_val);
 	if(my_val === undefined){
 		my_val = '--';
 	}
@@ -120,7 +125,7 @@ function findChord(chord){
 
 function findNotes(chord){
 	const base_note = chord[0];
-	var note_ref = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#'];
+	var note_ref = ['A','A\u266F','B','C','C\u266F','D','D\u266F','E','F','F\u266F','G','G\u266F'];
 	var len = note_ref.indexOf(base_note);
 	for(var i = 0; i < len; i++){
 		note_ref.push(note_ref.shift());
@@ -260,7 +265,8 @@ class App extends Component {
 		</header>
 		<div className="App-body">
 		<div className = "container">
-			<h2>Welcome to Strum</h2>
+			<h2>Learn Guitar Chords with Strum</h2>
+			<p>Select notes on the virtual fretboard and discover a chords name and interval structure.</p>
 			<div className = "guitar">
 				<div className = "graphics">
 					<div className = "fret-graphic">
@@ -270,6 +276,18 @@ class App extends Component {
 					<div className = "fret-graphic">
 					</div>
 					<div className = "fret-graphic">
+					</div>
+					<div className = "fret-dot" id="third">
+					</div>
+					<div className = "fret-dot" id="fifth">
+					</div>
+					<div className = "fret-dot" id="seventh">
+					</div>
+					<div className = "fret-dot" id="ninth">
+					</div>
+					<div className = "fret-dot" id="twelve-one">
+					</div>
+					<div className = "fret-dot" id="twelve-two">
 					</div>
 					<div className = "fret-graphic">
 					</div>
@@ -324,13 +342,13 @@ class App extends Component {
 				</div>
 			</div>
 		</div>
-		<div className = "container">
+		<div className = "container negative-margin">
 			<div className="row chord-info">
 				<div className = "chord_name column-4">
 					<h3><span>{this.state.chord.key}</span>{this.state.chord.chord}</h3>
 				</div>
 				<div className = "intervals column-6">
-					<h4>Chord Make Up</h4>
+					<h4>Chord Structure</h4>
 					<table>
 						<tbody>
 							<tr>
@@ -344,6 +362,9 @@ class App extends Component {
 				</div>
 			</div>
 		</div>
+		</div>
+		<div className="footer container-lrg">
+			<p>&#169; Ethan Shearer 2018</p>
 		</div>
 	</div>
 );
