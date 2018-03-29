@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import guitar from './guitar.png';
+import github from './github-mark.png';
+import header from './header-img.jpg';
 import './App.css';
 
 
@@ -259,14 +260,13 @@ class App extends Component {
 	<div className="App">
 		<header className="App-header">
             <div className="container-lrg">
-                <img src={guitar} alt="guitar"/>
 			    <h1 className="App-title">Strum</h1>
+				<h2 className="App-titletwo">The Guitar Chord App</h2>
             </div>
 		</header>
 		<div className="App-body">
 		<div className = "container">
-			<h2>Learn Guitar Chords with Strum</h2>
-			<p>Select notes on the virtual fretboard and discover a chords name and interval structure.<br/> The chords are named based on the lower most note being the root.</p>
+			<p>Select notes on the virtual fretboard and discover a chords name and interval structure.<br/> Chord names are based on lowest note being the root note.</p>
 			<div className = "guitar">
 				<div className = "graphics">
 					<div className = "fret-graphic">
@@ -364,7 +364,7 @@ class App extends Component {
 		</div>
 		</div>
 		<div className="footer container-lrg">
-			<p>&#169; Ethan Shearer 2018</p>
+			<p><a href="https://github.com/itaden1/strum"><img src={github}/></a><br/><a href="https://ethanshearer.com" target="blank">&#169; Ethan Shearer 2018</a></p>
 		</div>
 	</div>
 );
