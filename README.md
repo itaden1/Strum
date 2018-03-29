@@ -5,6 +5,8 @@ Strum is an application built with React for looking up guitar chord names and s
 ### To do list
 * Add support for Dom 13 chords
 * Add support for Dom 11 chords
+* Fix m11 chords
+* Fix madd9 chords
 * Add responsive CSS for smaller devices
 * Create a mobile app version with ReactNative
 * Add sounds?
