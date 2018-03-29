@@ -13,6 +13,8 @@ html, body{height:100%;position:relative;}
 
 .App-header {
 	background-image:url('./header-img.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
 	height:200px;
     text-align:left;
     color: white;
