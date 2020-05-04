@@ -119,26 +119,10 @@ class App extends Component {
 					
 					<div className = "guitar">
 						<GuitarFretBoard />
-						{/* <GuitarStrings strings={this.state.strings}/> */}
 						<div className = "boxes">
-							<div className = "string">
-								{this.renderString(1)}
-							</div>
-							<div className = "string">
-								{this.renderString(2)}
-							</div>
-							<div className = "string">
-								{this.renderString(3)}
-							</div>
-							<div className = "string">
-								{this.renderString(4)}
-							</div>
-							<div className = "string">
-								{this.renderString(5)}
-							</div>
-							<div className = "string">
-								{this.renderString(6)}
-							</div>
+							{Object.keys(this.state.strings).map((i) => {
+								return <div key={i} className="string">{this.renderString(i)}</div>
+							})}
 						</div>
 					</div>
 				</div>
