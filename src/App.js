@@ -5,7 +5,6 @@ import github from './github-mark-light.png';
 import IntervalNote from './modules/IntervalNote'
 import GuitarFretBoard from './modules/GuitarFretBoard'
 import GuitarStrings from './modules/GuitarStrings'
-import Fret from './modules/Fret'
 
 // lib
 import constants from './lib/constants'
@@ -27,7 +26,7 @@ class App extends Component {
 			}
 		};
 	}
-	addNote(v, k, s){
+	addNote = (k, s) => {
 		var strings = this.state.strings;
 
 		//Copy the selected notes then
@@ -67,6 +66,7 @@ class App extends Component {
 			notes: new_notes,
 		})
 	}
+
 	
 	renderIntervals(){
 		const interval_ref = constants.INTERVALS;
@@ -91,19 +91,6 @@ class App extends Component {
 		return interval_table
 	}
 
-	renderString(i){
-		const string = this.state.strings[i]
-		const notes = string.map( (value, key) => 
-			<Fret 
-				key = {key}
-				value = {value}
-				onClickCallback = {() => this.addNote(value,key,i)}
-			/>
-		);
-		return (
-			<span>{notes}</span>
-		);
-	}
 	render() {
 		return (
 			<div className="App">
@@ -119,11 +106,10 @@ class App extends Component {
 					
 					<div className = "guitar">
 						<GuitarFretBoard />
-						<div className = "boxes">
-							{Object.keys(this.state.strings).map((i) => {
-								return <div key={i} className="string">{this.renderString(i)}</div>
-							})}
-						</div>
+						<GuitarStrings
+							strings={this.state.strings}
+							callback={this.addNote}
+						/>
 					</div>
 				</div>
 				<div className = "container">

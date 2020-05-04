@@ -27,12 +27,10 @@ const findChord = (chord) => {
 	}
 	var sorted_val = interval_val.sort(function(a,b){return a - b;});
     for(var s = 0; s < sorted_val.length; s++){
-        console.log(sorted_val[s]);
 		val.push(constants.INTERVALS[sorted_val[s]]);
     }
 	var str_val = val.toString();
-    console.log('str val'+str_val);
-    console.log(interval_val);
+
 
 
 	var my_val = constants.CHORDS[str_val];  //getKeyByValue(chords,str_val);

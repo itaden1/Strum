@@ -1,43 +1,24 @@
 import React from 'react'
+
 import Fret from './Fret'
 
+const GuitarStrings = ({strings, callback}) => {
 
-const GuitarStrings = ({strings, clickCallback}) => {
-
-    const renderString = (i) => {
-        const string = strings[i]
-        const notes = string.map( (value, key) => 
+    const renderString = (stringIndex) => {
+        const notes = strings[stringIndex].map( (value, fretIndex) => 
             <Fret 
-                key = {key}
+                key = {fretIndex}
                 value = {value}
-                strIndex={i}
-                onClickCallback = {() => clickCallback()}
+                onClickCallback = {() => callback(fretIndex, stringIndex)}
             />
-        );
-        return (
-            <span>{notes}</span>
-        );
+		);
+		return (
+			<span key={stringIndex}>{notes}</span>
+		);
     }
     return (
         <div className = "boxes">
-            <div className = "string">
-                {renderString(1)}
-            </div>
-            <div className = "string">
-                {renderString(2)}
-            </div>
-            <div className = "string">
-                {renderString(3)}
-            </div>
-            <div className = "string">
-                {renderString(4)}
-            </div>
-            <div className = "string">
-                {renderString(5)}
-            </div>
-            <div className = "string">
-                {renderString(6)}
-            </div>
+            {Object.keys(strings).map((s) => renderString(s))}
         </div>
     )
 }
